@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "universal": {
+    "independent_review": true,
+    "sensitive_actions": "explicit-owner-approval"
+  },
+  "project": {
+    "id": "ia-kit-test-20261020",
+    "kind": "web",
+    "hosting": null,
+    "languages": [
+      "fr"
+    ],
+    "media": false,
+    "hero_required": false,
+    "restrictions": [],
+    "checks": []
+  },
+  "git": {
+    "provider": "local",
+    "mode": "existing-policy",
+    "base_ref": null,
+    "push": false,
+    "merge": false,
+    "automation_config": null
+  },
+  "automation": {
+    "level": 1,
+    "max_runs": 4,
+    "timeout_seconds": 300,
+    "task_cost_units": 0
+  },
+  "agents": {
+    "A": {
+      "identity": "author",
+      "enabled": false,
+      "argv": [],
+      "isolation_verified": false,
+      "provider_cap_verified": false,
+      "max_cost_units": 0
+    },
+    "B": {
+      "identity": "reviewer",
+      "enabled": false,
+      "argv": [],
+      "isolation_verified": false,
+      "provider_cap_verified": false,
+      "max_cost_units": 0
+    }
+  }
+}

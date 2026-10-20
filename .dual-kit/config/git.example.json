@@ -1,0 +1,26 @@
+{
+  "approved": false,
+  "author_root": "/replace/author",
+  "reviewer_root": "/replace/reviewer",
+  "control_dir": "/replace/private-controller",
+  "remote": "origin",
+  "remote_url": "ssh://git@example.invalid/project.git",
+  "branch": "replace-with-existing-branch",
+  "scope": ["src", "tests"],
+  "checks": [],
+  "allow_fetch": false,
+  "allow_ff": false,
+  "allow_commit": false,
+  "allow_push": false,
+  "branch_policy_verified": false,
+  "authorization": "",
+  "protected_branches": [],
+  "protected_push_authorized": false,
+  "timeout_seconds": 120,
+  "max_rounds": 3,
+  "hooks_policy": "require-review",
+  "agents": {
+    "A": {"identity": "author", "kind": "provider-wrapper", "enabled": false, "trusted_execution": false, "argv": []},
+    "B": {"identity": "reviewer", "kind": "provider-wrapper", "enabled": false, "trusted_execution": false, "argv": []}
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "approved": false,
+  "test_mode": false,
+  "exclusive_workspaces": false,
+  "data_egress_authorized": false,
+  "allow_auth_probe": false,
+  "completion": {"auto_close": false, "authorization": ""},
+  "max_context_bytes": 100000,
+  "max_dispatch_attempts": 3,
+  "read_files": [],
+  "sensitive_paths": ["migrations", "infra", "secrets", "projet", "coordination"],
+  "daemon": {"enabled": false, "authorization": "", "poll_seconds": 2, "max_jobs_per_process": 100},
+  "isolation": {"kind": "docker", "image": null},
+  "spending": {
+    "enabled": false, "authorization": "", "total_micro_usd": 0,
+    "task_micro_usd": 0, "role_micro_usd": 0, "max_calls": 0, "max_attempts": 1
+  },
+  "providers": {
+    "A": {"provider": "openai", "model": null, "auth_env": "OPENAI_API_KEY", "context_tokens": null,
+      "max_output_tokens": 2048, "input_micro_usd_per_million": null,
+      "output_micro_usd_per_million": null, "pricing_verified_at": null, "limits_verified": false, "timeout_seconds": 60},
+    "B": {"provider": "anthropic", "model": null, "auth_env": "ANTHROPIC_API_KEY", "context_tokens": null,
+      "max_output_tokens": 2048, "input_micro_usd_per_million": null,
+      "output_micro_usd_per_million": null, "pricing_verified_at": null, "limits_verified": false, "timeout_seconds": 60}
+  },
+  "git": null
+}
