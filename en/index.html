@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rent a bike in Lausanne — fictitious test project</title>
+  <meta name="description" content="Fictitious test project: city bike, electric bike and mountain bike rental in Lausanne.">
+  <style>
+    :root { --pierre:#f3ede2; --encre:#1d2326; --lac:#1f4e5a; --route:#a4402a; --sable:#d8cdb8; --gris:#4f5b57; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--pierre); color: var(--encre); font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; line-height: 1.1; margin: 0; }
+    a { color: var(--lac); }
+    :focus-visible { outline: 3px solid var(--route); outline-offset: 3px; }
+    .lien-evitement { position: absolute; left: 1rem; top: -4rem; background: var(--encre); color: #fff; padding: .5rem 1rem; z-index: 9; }
+    .lien-evitement:focus { top: 1rem; }
+    .wrap { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+    .haut { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid var(--sable); }
+    .marque { font-family: Georgia, serif; font-size: 1.3rem; color: var(--encre); text-decoration: none; }
+    .marque small { display: block; font: 600 .72rem/1.2 system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--route); }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
+    nav a { color: var(--encre); text-decoration: none; border-bottom: 1px solid transparent; }
+    nav a:hover { border-bottom-color: var(--route); }
+    .langues a { margin-left: .35rem; font-size: .85rem; padding: .15rem .35rem; border-radius: 4px; text-decoration: none; color: var(--gris); }
+    .langues a[aria-current="page"] { color: var(--encre); font-weight: 700; background: var(--sable); }
+    .accueil { display: grid; gap: 2.5rem; padding: clamp(2.5rem, 6vw, 5rem) 0; align-items: end; grid-template-columns: minmax(0, 1fr); }
+    .etiquette { font: 600 .75rem/1.4 system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--route); margin: 0 0 1rem; }
+    .accueil h1 { font-size: clamp(2.3rem, 6vw, 4.3rem); letter-spacing: -.01em; max-width: 14ch; }
+    .accueil .texte p { font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 44ch; margin: 1.25rem 0 1.75rem; }
+    .bouton { display: inline-block; background: var(--lac); color: #fff; text-decoration: none; padding: .8rem 1.3rem; border-radius: 2px; font-weight: 600; }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; object-fit: cover; }
+    figcaption { font-size: .82rem; color: var(--gris); margin-top: .5rem; }
+    .photo-hero img { aspect-ratio: 4 / 5; object-position: 60% 50%; }
+    section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; border-top: 1px solid var(--sable); }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); margin-bottom: 1.5rem; max-width: 20ch; }
+    .gammes { margin: 0; border-top: 2px solid var(--encre); }
+    .gammes div { display: grid; gap: .5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--sable); }
+    .gammes dt { font-family: Georgia, serif; font-size: 1.5rem; }
+    .gammes dt span { color: var(--route); font: 600 .8rem system-ui, sans-serif; letter-spacing: .1em; margin-right: .9rem; vertical-align: middle; }
+    .gammes dd { margin: 0; color: var(--gris); }
+    .double { display: grid; gap: 2rem; }
+    .double p { margin: 0 0 1rem; }
+    .etapes { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; counter-reset: n; }
+    .etapes li { counter-increment: n; border-top: 2px solid var(--lac); padding-top: 1rem; }
+    .etapes li::before { content: counter(n, decimal-leading-zero); font-family: Georgia, serif; font-size: 2.2rem; color: var(--lac); display: block; line-height: 1; }
+    .contact { background: var(--lac); color: #fff; border-top: 0; }
+    .contact h2 { color: #fff; }
+    .contact a { color: #fff; }
+    .avertissement { border-left: 3px solid #e8b9a6; padding-left: 1rem; margin-top: 1.25rem; font-size: .95rem; }
+    footer { padding: 2rem 0; font-size: .88rem; color: var(--gris); }
+    @media (min-width: 768px) {
+      .accueil { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+      .double { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+      .etapes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) { .accueil { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Skip to content</a>
+
+  <header class="wrap haut">
+    <a class="marque" href="#accueil">Vélo Lausanne<small>Fictitious test project</small></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#velos">Bikes</a></li>
+        <li><a href="#itineraires">Routes</a></li>
+        <li><a href="#fonctionnement">How it works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <nav class="langues" aria-label="Languages">
+      <a href="../index.html" hreflang="fr" lang="fr">FR</a>
+      <a href="index.html" hreflang="en" lang="en" aria-current="page">EN</a>
+      <a href="../de/index.html" hreflang="de" lang="de">DE</a>
+      <a href="../it/index.html" hreflang="it" lang="it">IT</a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="accueil wrap" id="accueil" aria-labelledby="titre-accueil" style="border-top:0">
+      <div class="texte">
+        <p class="etiquette">Bike rental · Lausanne</p>
+        <h1 id="titre-accueil">Rent a bike to discover Lausanne</h1>
+        <p>City bikes, electric bikes and mountain bikes, handed over in the city centre. Prices on request.</p>
+        <a class="bouton" href="#contact">Ask about availability</a>
+      </div>
+      <figure class="photo-hero">
+        <img src="../img/parc-olympique-lausanne-1600.jpg" width="1920" height="1440" alt="Sculpture of three cyclists in the Olympic Park of Lausanne, with Lake Geneva in the background">
+        <figcaption>Olympic Park, Lausanne. Photo: Herbert wie, CC BY-SA 4.0.</figcaption>
+      </figure>
+    </section>
+
+    <section id="velos" aria-labelledby="titre-velos" class="wrap">
+      <h2 id="titre-velos">Three bikes, three uses</h2>
+      <dl class="gammes">
+        <div><dt><span>01</span>City bike</dt><dd>Comfortable for daily trips and rides along the lake.</dd></div>
+        <div><dt><span>02</span>Electric bike</dt><dd>Moderate assistance to climb towards the centre and the upper neighbourhoods.</dd></div>
+        <div><dt><span>03</span>Mountain bike</dt><dd>For forest tracks and the routes of the Riviera vaudoise.</dd></div>
+      </dl>
+    </section>
+
+    <section id="itineraires" aria-labelledby="titre-itineraires" class="wrap">
+      <h2 id="titre-itineraires">Signposted routes</h2>
+      <div class="double">
+        <figure>
+          <img src="../img/route-signs-lausanne-1600.jpg" width="1920" height="1440" loading="lazy" alt="Cycle route signs for the Route du Rhône and Route Mittelland in Lausanne">
+          <figcaption>Route du Rhône and Route Mittelland cycle routes, Lausanne. Photo: Timmaexx, CC BY 3.0.</figcaption>
+        </figure>
+        <div>
+          <p>To reach the lake and the Riviera, we recommend the signposted routes. Routes are indicative.</p>
+          <figure>
+            <img src="../img/place-bel-air-lausanne-1600.jpg" width="1920" height="1078" loading="lazy" alt="Road with a bus and a bike lane marking on the ground, in Lausanne">
+            <figcaption>Place Bel-Air, Lausanne. Photo: MHM55, CC BY-SA 4.0.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="fonctionnement" aria-labelledby="titre-fonctionnement" class="wrap">
+      <h2 id="titre-fonctionnement">How it works</h2>
+      <ol class="etapes">
+        <li>Send a request with the date and duration you want.</li>
+        <li>We confirm availability and price by e-mail.</li>
+        <li>You collect the bike at the agreed meeting point, helmet included.</li>
+      </ol>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="titre-contact">
+      <div class="wrap">
+        <h2 id="titre-contact">Contact</h2>
+        <p>Test project — fictitious contact. No address is published and no request is processed.</p>
+        <p class="avertissement">This service does not exist: no price, availability or review is real.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Test page generated with the dual AI kit. No personal data collected. Photo credits: <a href="../CREDITS.md">CREDITS.md</a>.</p>
+  </footer>
+</body>
+</html>
