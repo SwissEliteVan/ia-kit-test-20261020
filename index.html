@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Location de vélos à Lausanne (projet test fictif)</title>
+  <meta name="description" content="Projet test fictif : location de vélos de ville, électriques et VTT à Lausanne.">
+  <style>
+    :root {
+      --encre: #1c2420;
+      --fond: #f6f3ec;
+      --vert: #2f5d4a;
+      --sable: #e7dcc7;
+      --focus: #b5452b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--encre);
+      background: var(--fond);
+    }
+    .lien-evitement {
+      position: absolute; left: 1rem; top: -4rem; background: var(--encre); color: #fff; padding: .5rem 1rem; z-index: 10;
+    }
+    .lien-evitement:focus { top: 1rem; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .conteneur { width: min(1080px, calc(100% - 2rem)); margin-inline: auto; }
+    header { padding: 1.25rem 0; border-bottom: 1px solid var(--sable); }
+    header .conteneur { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; }
+    .marque { font-weight: 700; letter-spacing: .02em; color: var(--vert); text-decoration: none; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    nav a { color: var(--encre); }
+    .accueil { padding: clamp(3rem, 8vw, 6rem) 0; background: linear-gradient(160deg, var(--vert) 0%, #1f3d31 100%); color: #fff; }
+    .accueil h1 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.15; margin: 0 0 1rem; max-width: 18ch; }
+    .accueil p { font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 52ch; margin: 0 0 1.75rem; }
+    .bouton {
+      display: inline-block; background: #fff; color: var(--vert); text-decoration: none; font-weight: 700;
+      padding: .85rem 1.4rem; border-radius: 999px;
+    }
+    section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 1.25rem; }
+    .cartes { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .carte { background: #fff; border: 1px solid var(--sable); border-radius: 14px; padding: 1.5rem; }
+    .carte h3 { margin: 0 0 .5rem; font-size: 1.2rem; }
+    .carte p { margin: 0; }
+    .etapes { counter-reset: etape; list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+    .etapes li { counter-increment: etape; padding-left: 3.25rem; position: relative; }
+    .etapes li::before {
+      content: counter(etape); position: absolute; left: 0; top: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%;
+      background: var(--vert); color: #fff; display: grid; place-items: center; font-weight: 700;
+    }
+    .contact { background: var(--sable); }
+    .contact a { color: var(--vert); font-weight: 700; }
+    .avertissement {
+      border-left: 4px solid var(--focus); padding: .75rem 1rem; background: #fff; margin: 0; font-size: .95rem;
+    }
+    footer { padding: 2rem 0; font-size: .9rem; color: #4a5650; }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header>
+    <div class="conteneur">
+      <a class="marque" href="#accueil">Vélo Lausanne</a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#services">Vélos</a></li>
+          <li><a href="#fonctionnement">Fonctionnement</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="accueil" id="accueil" aria-labelledby="titre-accueil">
+      <div class="conteneur">
+        <h1 id="titre-accueil">Louez un vélo pour explorer Lausanne</h1>
+        <p>Vélos de ville, vélos électriques et VTT, remis en main propre au centre-ville. Tarifs sur demande.</p>
+        <a class="bouton" href="#contact">Demander une disponibilité</a>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="titre-services">
+      <div class="conteneur">
+        <h2 id="titre-services">Nos vélos</h2>
+        <div class="cartes">
+          <article class="carte">
+            <h3>Vélo de ville</h3>
+            <p>Confortable pour les trajets quotidiens et les balades le long du lac.</p>
+          </article>
+          <article class="carte">
+            <h3>Vélo électrique</h3>
+            <p>Assistance modérée pour gravir les pentes du centre et des quartiers hauts.</p>
+          </article>
+          <article class="carte">
+            <h3>VTT</h3>
+            <p>Pour les chemins forestiers et les itinéraires de la Riviera vaudoise.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fonctionnement" aria-labelledby="titre-fonctionnement">
+      <div class="conteneur">
+        <h2 id="titre-fonctionnement">Comment ça marche</h2>
+        <ol class="etapes">
+          <li>Envoyez-nous une demande avec la date et la durée souhaitées.</li>
+          <li>Nous confirmons la disponibilité et le tarif par e-mail.</li>
+          <li>Vous récupérez le vélo au rendez-vous convenu, casque inclus.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="titre-contact">
+      <div class="conteneur">
+        <h2 id="titre-contact">Contact</h2>
+        <p>Écrivez-nous à <a href="mailto:contact@example.com">contact@example.com</a>.</p>
+        <p class="avertissement">Projet test fictif : ce service n'existe pas. Aucun tarif, aucune disponibilité et aucun avis ne sont réels.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteneur">
+      <p>Page de test générée avec le kit IA dual. Aucune donnée personnelle collectée.</p>
+    </div>
+  </footer>
+</body>
+</html>
